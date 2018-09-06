@@ -8,9 +8,6 @@
     },
     "webAppPortalName": {
       "value": "webAppPortalName"
-    },
-    "webAppSlotName": {
-      "value": "webAppSlotName"
     }
   }
 }
