@@ -29,6 +29,8 @@
     <Content Include="VSTSBuildAgent\azuredeploy.parameters.json" />
     <None Include="AzureMSSQL\AzureMSSQL.json" />
     <None Include="AzureMSSQL\AzureMSSQL.parameters.json" />
+    <None Include="AzureWebsite\AzureWebsite.json" />
+    <None Include="AzureWebsite\AzureWebsite.parameters.json" />
     <None Include="Deployment.targets">
       <Visible>False</Visible>
     </None>
