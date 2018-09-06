@@ -23,13 +23,18 @@
   <Import Condition=" Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Deployment\1.1\DeploymentProject.targets') " Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Deployment\1.1\DeploymentProject.targets" />
   <!-- vertag<:>end -->
   <ItemGroup>
-    <Content Include="AzureKeyVault\azuredeploy.parameters.json" />
-    <Content Include="AzureKeyVault\azuredeploy.json" />
+    <Content Include="AzureKeyVault\AzureKeyVault.parameters.json" />
+    <Content Include="AzureKeyVault\AzureKeyVault.json" />
+    <Content Include="VSTSBuildAgent\azuredeploy.json" />
+    <Content Include="VSTSBuildAgent\azuredeploy.parameters.json" />
     <None Include="Deployment.targets">
       <Visible>False</Visible>
     </None>
     <Content Include="Deploy-AzureResourceGroup.ps1" />
     <Content Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="VNet\" />
   </ItemGroup>
   <Target Name="GetReferenceAssemblyPaths" />
 </Project>

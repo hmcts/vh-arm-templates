@@ -1,0 +1,104 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "adminUsername": {
+      "type": "string"
+    },
+    "adminPassword": {
+      "type": "securestring"
+    },
+    "virtualNetworkResourceGroup": {
+      "type": "string",
+      "defaultValue": "vh-ase-fe-dev-vnet"
+    },
+    "virtualNetworkName": {
+      "type": "string",
+      "defaultValue": "vh-ase-fe-dev-vnet"
+    },
+    "subnetName": {
+      "type": "string",
+      "defaultValue": "vh-vsts-agent"
+    }
+  },
+  "variables": {
+
+    "vnetID": "[resourceId(parameters('virtualNetworkResourceGroup'), 'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
+    "subnetRef": "[concat(variables('vnetID'),'/subnets/', parameters('subnetName'))]"
+  },
+  "resources": [
+    {
+      "apiVersion": "2016-03-30",
+      "type": "Microsoft.Network/publicIPAddresses",
+      "name": "myPublicIPAddress",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "publicIPAllocationMethod": "Dynamic",
+        "dnsSettings": {
+          "domainNameLabel": "vh-vsts-agent-01"
+        }
+      }
+    },
+    {
+      "apiVersion": "2016-03-30",
+      "type": "Microsoft.Network/networkInterfaces",
+      "name": "myNic",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/publicIPAddresses/', 'myPublicIPAddress')]"
+      ],
+      "properties": {
+        "ipConfigurations": [
+          {
+            "name": "ipconfig1",
+            "properties": {
+              "privateIPAllocationMethod": "Dynamic",
+              "publicIPAddress": { "id": "[resourceId('Microsoft.Network/publicIPAddresses','myPublicIPAddress')]" },
+              "subnet": { "id": "[variables('subnetRef')]" }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "2016-04-30-preview",
+      "type": "Microsoft.Compute/virtualMachines",
+      "name": "myVM",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/networkInterfaces/', 'myNic')]"
+
+      ],
+      "properties": {
+        "hardwareProfile": {
+          "vmSize": "Standard_B2ms"
+        },
+        "osProfile": {
+          "computerName": "vh-vsts-agent01",
+          "adminUsername": "[parameters('adminUsername')]",
+          "adminPassword": "[parameters('adminPassword')]"
+        },
+        "storageProfile": {
+          "imageReference": {
+            "publisher": "MicrosoftVisualStudio",
+            "offer": "VisualStudio",
+            "sku": "VS-2017-Comm-Latest-WS2016",
+            "version": "latest"
+          },
+          "osDisk": {
+            "name": "myManagedOSDisk",
+            "caching": "ReadWrite",
+            "createOption": "FromImage"
+          }
+        },
+        "networkProfile": {
+          "networkInterfaces": [
+            {
+              "id": "[resourceId('Microsoft.Network/networkInterfaces','myNic')]"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
