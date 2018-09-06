@@ -70,7 +70,7 @@
   },
   "variables": {
     "emailAddresses": "[parameters('EmailAddresses')]",
-    "storageAccountName": "[replace(parameters('StorageName'),'-', '')]"
+    "storageAccountName": "[replace(parameters('MSSQLDBServerName'),'-', '')]"
 
   },
   "resources": [
