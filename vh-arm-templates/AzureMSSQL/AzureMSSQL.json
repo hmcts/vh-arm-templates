@@ -17,9 +17,6 @@
     "MSSQLAdminLoginPassword": {
       "type": "securestring"
     },
-    "StorageName": {
-      "type": "string"
-    },
     "StorageType": {
       "type": "string",
       "defaultValue": "Standard_LRS",
