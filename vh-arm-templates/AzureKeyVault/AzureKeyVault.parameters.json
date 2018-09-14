@@ -3,10 +3,10 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "keyVaultName": {
-      "value": null
+      "value": "keyVaultName"
     },
     "objectId": {
-      "value": null
+      "value": "b43475e2-861a-4fbd-8f9a-4722e5641166"
     }
   }
 }
