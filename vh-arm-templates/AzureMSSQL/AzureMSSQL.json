@@ -66,7 +66,9 @@
     }
   },
   "variables": {
-    "MSSQLAdminLoginPassword": "[concat(uniqueString(resourceGroup().id)) ]",
+    "MSSQLAdminLoginPassword": "[concat('P', uniqueString(resourceGroup().id, '280aeb7e-2180-4ebf-bacb-36c068253a49'), 'x', '!')]",
+    "\",",
+    : null,
     "emailAddresses": "[parameters('EmailAddresses')]",
     "storageAccountName": "[replace(parameters('MSSQLDBServerName'),'-', '')]"
 
