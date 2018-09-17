@@ -6,9 +6,6 @@
     "MSSQLAdminLogin": {
       "value": "mssqladmin"
     },
-    "MSSQLAdminLoginPassword": {
-      "value": "xxxxxxxxxxxxx"
-    },
     "MSSQLDBName": {
       "value": "mssqldbname"
     },

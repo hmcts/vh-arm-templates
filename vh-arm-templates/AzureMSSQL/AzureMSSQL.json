@@ -14,9 +14,6 @@
       "type": "string",
       "minLength": 1
     },
-    "MSSQLAdminLoginPassword": {
-      "type": "securestring"
-    },
     "StorageType": {
       "type": "string",
       "defaultValue": "Standard_LRS",
@@ -69,6 +66,7 @@
     }
   },
   "variables": {
+    "MSSQLAdminLoginPassword": "[concat(uniqueString(resourceGroup().id)) ]",
     "emailAddresses": "[parameters('EmailAddresses')]",
     "storageAccountName": "[replace(parameters('MSSQLDBServerName'),'-', '')]"
 
@@ -88,7 +86,7 @@
       },
       "properties": {
         "administratorLogin": "[parameters('MSSQLAdminLogin')]",
-        "administratorLoginPassword": "[parameters('MSSQLAdminLoginPassword')]"
+        "administratorLoginPassword": "[variables('MSSQLAdminLoginPassword')]"
       },
       "resources": [
         {
@@ -151,7 +149,7 @@
             "[resourceId('Microsoft.Sql/servers', parameters('MSSQLDBServerName'))]"
           ],
           "tags": {
-            "displayName": "Virtual Courtroom Database"
+            "displayName": "Database"
           },
           "properties": {
             "collation": "[parameters('MSSQLCollation')]",
@@ -180,7 +178,11 @@
   ],
   "outputs": {
     "DatabaseConnectionString": {
-      "value": "[concat('Server=tcp:',reference(parameters('MSSQLDBServerName')).fullyQualifiedDomainName,',1433;Initial Catalog=',parameters('MSSQLDBName'),';Persist Security Info=False;User ID=',reference(parameters('MSSQLDBServerName')).administratorLogin,';Password=',parameters('MSSQLAdminLoginPassword'),';MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;')]",
+      "value": "[concat('Server=tcp:',reference(parameters('MSSQLDBServerName')).fullyQualifiedDomainName,',1433;Initial Catalog=',parameters('MSSQLDBName'),';Persist Security Info=False;User ID=',reference(parameters('MSSQLDBServerName')).administratorLogin,';Password=',variables('MSSQLAdminLoginPassword'),';MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;')]",
+      "type": "string"
+    },
+    "MSSQLAdminLoginPassword": {
+      "value": "[variables('MSSQLAdminLoginPassword')]",
       "type": "string"
     }
   }
