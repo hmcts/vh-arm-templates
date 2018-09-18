@@ -3,10 +3,10 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "keyVaultName": {
-      "value": "vh-core-infra-preview"
+      "value": "GET-PREREQ-keyVaultName"
     },
     "objectId": {
-      "value": "655eb910-cf45-403b-b2ff-d8ee40a5cd69"
+      "value": "GEN-AZUREAD-OBJECTID"
     },
     "secretsPermissions": {
       "value": [ "list", "get" ]
