@@ -1,0 +1,15 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "keyVaultName": {
+      "value": "vh-core-infra-preview"
+    },
+    "objectId": {
+      "value": "655eb910-cf45-403b-b2ff-d8ee40a5cd69"
+    },
+    "secretsPermissions": {
+      "value": [ "list", "get" ]
+    }
+  }
+}

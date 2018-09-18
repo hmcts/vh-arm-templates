@@ -27,6 +27,8 @@
     <Content Include="AzureApplicationInsights\AzureApplicationInsights.parameters.json" />
     <Content Include="AzureAppServicePlan\AzureAppServicePlan.json" />
     <Content Include="AzureAppServicePlan\AzureAppServicePlan.parameters.json" />
+    <Content Include="AzureKeyVaultAccessPolicy\AzureKeyVaultAccessPolicy.json" />
+    <Content Include="AzureKeyVaultAccessPolicy\AzureKeyVaultAccessPolicy.parameters.json" />
     <Content Include="AzureKeyVault\AzureKeyVault.parameters.json" />
     <Content Include="AzureKeyVault\AzureKeyVault.json" />
     <Content Include="VSTSBuildAgent\azuredeploy.json" />
