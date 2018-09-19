@@ -78,6 +78,7 @@
         "enabledForDiskEncryption": "[parameters('enableVaultForDiskEncryption')]",
         "enabledForTemplateDeployment": "[parameters('enabledForTemplateDeployment')]",
         "tenantId": "[parameters('tenantId')]",
+        "accessPolicies": [],
         "sku": {
           "name": "[parameters('skuName')]",
           "family": "A"
