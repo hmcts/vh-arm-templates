@@ -37,5 +37,11 @@
         "Application_Type": "web"
       }
     }
-  ]
+  ],
+  "outputs": {
+    "ApplicationInsightsInstrumentationKey": {
+      "value": "[reference(resourceId('Microsoft.Insights/components', parameters('appInsightsName')), '2015-05-01').InstrumentationKey]",
+      "type": "string"
+    }
+  }
 }
