@@ -4,7 +4,7 @@
   "parameters": {
 
     "appServicePlanName": {
-      "value": "appServicePlanName"
+      "value": "vh-core-infra-preview"
     },
     "webAppPortalName": {
       "value": "webAppPortalName"
