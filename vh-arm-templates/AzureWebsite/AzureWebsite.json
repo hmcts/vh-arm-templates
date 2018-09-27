@@ -46,7 +46,7 @@
         "displayName": "WebAppSlots"
       },
       "properties": {
-        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('appServicePlanName'))]"
+        "serverFarmId": "[resourceId(parameters('appServicePlanName'), 'Microsoft.Web/serverfarms', parameters('appServicePlanName'))]"
       },
       "dependsOn": [
         "[resourceId('Microsoft.Web/Sites', parameters('webAppPortalName'))]"
