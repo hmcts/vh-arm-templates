@@ -1,0 +1,65 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "RedisCacheName": {
+      "type": "string",
+      "minLength": 1
+    },
+    "RedisCacheSKUName": {
+      "type": "string",
+      "allowedValues": [
+        "Basic",
+        "Standard"
+      ],
+      "defaultValue": "Standard"
+    },
+    "RedisCacheSKUFamily": {
+      "type": "string",
+      "allowedValues": [
+        "C"
+      ],
+      "defaultValue": "C"
+    },
+    "RedisCacheSKUCapacity": {
+      "type": "int",
+      "allowedValues": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "defaultValue": 1
+    }
+  },
+  "variables": {
+  },
+  "resources": [
+    {
+      "name": "[parameters('RedisCacheName')]",
+      "type": "Microsoft.Cache/Redis",
+      "location": "[resourceGroup().location]",
+      "apiVersion": "2017-10-01",
+      "dependsOn": [],
+      "tags": {
+        "displayName": "RedisCache"
+      },
+      "properties": {
+        "sku": {
+          "name": "[parameters('RedisCacheSKUName')]",
+          "family": "[parameters('RedisCacheSKUFamily')]",
+          "capacity": "[parameters('RedisCacheSKUCapacity')]"
+        }
+      }
+    }
+  ],
+  "outputs": {
+    "RedisCacheConnectionString": {
+      "value": "[concat(reference(parameters('RedisCacheName')).hostname, ':6380,password=', reference(parameters('RedisCacheName')).accessKeys.primaryKey, ',ssl=True,abortConnect=False')]",
+      "type": "string"
+    }
+  }
+}
