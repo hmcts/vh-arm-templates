@@ -25,6 +25,8 @@
   <ItemGroup>
     <Content Include="AzureApplicationInsights\AzureApplicationInsights.json" />
     <Content Include="AzureApplicationInsights\AzureApplicationInsights.parameters.json" />
+    <Content Include="AzureRedisCache\AzureRedisCache.json" />
+    <Content Include="AzureRedisCache\AzureRedisCache.parameters.json" />
     <Content Include="AzureAppServicePlan\AzureAppServicePlan.json" />
     <Content Include="AzureAppServicePlan\AzureAppServicePlan.parameters.json" />
     <Content Include="AzureKeyVaultAccessPolicy\AzureKeyVaultAccessPolicy.json" />
