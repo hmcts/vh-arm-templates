@@ -7,7 +7,13 @@
       "value": "vh-core-infra-preview"
     },
     "webAppPortalName": {
-      "value": "webAppPortalName"
+      "value": "jb-site"
+    },
+    "allowedCorsOrigins": {
+      "value": [
+        "http://localhost",
+        "https://localhost"
+      ]
     }
   }
 }

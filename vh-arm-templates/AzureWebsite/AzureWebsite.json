@@ -23,7 +23,10 @@
     },
     "allowedCorsOrigins": {
       "type": "array",
-      "defaultValue": "*"
+      "defaultValue": [
+        "http://localhost",
+        "https://localhost"
+      ]
     }
   },
   "variables": {
@@ -46,9 +49,7 @@
         "siteConfig": {
           "minTlsVersion": "[parameters('minTlsVersion')]",
           "cors": {
-            "allowedOrigins": [
-              "[parameters('allowedCorsOrigins')]"
-            ]
+            "allowedOrigins": "[parameters('allowedCorsOrigins')]"
           }
         }
       },
@@ -70,9 +71,7 @@
         "siteConfig": {
           "minTlsVersion": "[parameters('minTlsVersion')]",
           "cors": {
-            "allowedOrigins": [
-              "[parameters('allowedCorsOrigins')]"
-            ]
+            "allowedOrigins": "[parameters('allowedCorsOrigins')]"
           }
         }
       },
