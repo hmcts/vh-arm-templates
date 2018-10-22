@@ -15,11 +15,11 @@
     "minTlsVersion": {
       "type": "string",
       "allowedValues": [
-        "1",
+        "1.0",
         "1.1",
         "1.2"
       ],
-      "defaultValue": "1"
+      "defaultValue": "1.0"
     }
   },
   "variables": {
