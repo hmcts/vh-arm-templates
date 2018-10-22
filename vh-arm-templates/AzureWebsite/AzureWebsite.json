@@ -20,6 +20,10 @@
         "1.2"
       ],
       "defaultValue": "1.0"
+    },
+    "allowedCorsOrigins": {
+      "type": "string",
+      "defaultValue": ""
     }
   },
   "variables": {
@@ -40,7 +44,12 @@
       "properties": {
         "serverFarmId": "[resourceId(parameters('appServicePlanName'), 'Microsoft.Web/serverfarms', parameters('appServicePlanName'))]",
         "siteConfig": {
-          "minTlsVersion": "[parameters('minTlsVersion')]"
+          "minTlsVersion": "[parameters('minTlsVersion')]",
+          "cors": {
+            "allowedOrigins": [
+              "string"
+            ]
+          }
         }
       },
       "dependsOn": [
@@ -59,7 +68,12 @@
       "properties": {
         "serverFarmId": "[resourceId(parameters('appServicePlanName'), 'Microsoft.Web/serverfarms', parameters('appServicePlanName'))]",
         "siteConfig": {
-          "minTlsVersion": "[parameters('minTlsVersion')]"
+          "minTlsVersion": "[parameters('minTlsVersion')]",
+          "cors": {
+            "allowedOrigins": [
+              "string"
+            ]
+          }
         }
       },
       "dependsOn": [
