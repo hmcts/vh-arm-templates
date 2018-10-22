@@ -47,7 +47,7 @@
           "minTlsVersion": "[parameters('minTlsVersion')]",
           "cors": {
             "allowedOrigins": [
-              "string"
+              "[parameters('allowedCorsOrigins')]"
             ]
           }
         }
