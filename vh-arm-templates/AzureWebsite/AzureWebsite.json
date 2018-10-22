@@ -22,8 +22,8 @@
       "defaultValue": "1.0"
     },
     "allowedCorsOrigins": {
-      "type": "string",
-      "defaultValue": ""
+      "type": "array",
+      "defaultValue": "*"
     }
   },
   "variables": {
@@ -71,7 +71,7 @@
           "minTlsVersion": "[parameters('minTlsVersion')]",
           "cors": {
             "allowedOrigins": [
-              "string"
+              "[parameters('allowedCorsOrigins')]"
             ]
           }
         }
