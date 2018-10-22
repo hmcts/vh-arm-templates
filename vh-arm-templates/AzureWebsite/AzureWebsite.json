@@ -11,6 +11,15 @@
     "webAppSlotName": {
       "type": "string",
       "defaultValue": "staging"
+    },
+    "minTlsVersion": {
+      "type": "string",
+      "allowedValues": [
+        1.0,
+        1.1,
+        1.2
+      ],
+      "defaultValue": "1.0"
     }
   },
   "variables": {
@@ -29,7 +38,10 @@
         "displayName": "WebApp"
       },
       "properties": {
-        "serverFarmId": "[resourceId(parameters('appServicePlanName'), 'Microsoft.Web/serverfarms', parameters('appServicePlanName'))]"
+        "serverFarmId": "[resourceId(parameters('appServicePlanName'), 'Microsoft.Web/serverfarms', parameters('appServicePlanName'))]",
+        "siteConfig": {
+          "minTlsVersion": "[parameters('minTlsVersion')]"
+        }
       },
       "dependsOn": [
 
@@ -46,7 +58,10 @@
         "displayName": "WebAppSlots"
       },
       "properties": {
-        "serverFarmId": "[resourceId(parameters('appServicePlanName'), 'Microsoft.Web/serverfarms', parameters('appServicePlanName'))]"
+        "serverFarmId": "[resourceId(parameters('appServicePlanName'), 'Microsoft.Web/serverfarms', parameters('appServicePlanName'))]",
+        "siteConfig": {
+          "minTlsVersion": "[parameters('minTlsVersion')]"
+        }
       },
       "dependsOn": [
         "[resourceId('Microsoft.Web/Sites', parameters('webAppPortalName'))]"

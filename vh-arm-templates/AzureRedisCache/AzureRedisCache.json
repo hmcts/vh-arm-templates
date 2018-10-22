@@ -58,7 +58,7 @@
   ],
   "outputs": {
     "RedisCacheConnectionString": {
-      "value": "[concat(reference(parameters('RedisCacheName')).hostname, ':6380,password=', reference(parameters('RedisCacheName')).accessKeys.primaryKey, ',ssl=True,abortConnect=False')]",
+      "value": "[concat(parameters('RedisCacheName'),'.redis.cache.windows.net,abortConnect=false,ssl=true,password=', listKeys(resourceId('Microsoft.Cache/Redis', parameters('RedisCacheName')), '2018-03-01').primaryKey)]",
       "type": "string"
     }
   }
