@@ -27,6 +27,10 @@
         "http://localhost",
         "https://localhost"
       ]
+    },
+    "httpsOnly": {
+      "type": "bool",
+      "defaultValue": false
     }
   },
   "variables": {
@@ -51,7 +55,8 @@
           "cors": {
             "allowedOrigins": "[parameters('allowedCorsOrigins')]"
           }
-        }
+        },
+        "httpsOnly": "[parameters('httpsOnly')]"
       },
       "dependsOn": [
       ]
@@ -73,7 +78,8 @@
           "cors": {
             "allowedOrigins": "[parameters('allowedCorsOrigins')]"
           }
-        }
+        },
+        "httpsOnly": "[parameters('httpsOnly')]"
       },
       "dependsOn": [
         "[resourceId('Microsoft.Web/Sites', parameters('webAppPortalName'))]"
