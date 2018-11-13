@@ -38,6 +38,14 @@
       "metadata": {
         "description": "Location for all resources."
       }
+    },
+
+    "certificateName": {
+      "type": "string",
+      "defaultValue": "certificateName",
+      "metadata": {
+        "description": "Location for all resources."
+      }
     }
   },
   "resources": [
@@ -56,6 +64,18 @@
       "sku": {
         "name": "[parameters('sku')]",
         "tier": "[parameters('tier')]"
+      }
+    },
+    {
+      "condition": "[not(equals(parameters('certificateName'), 'certificateName'))]",
+      "type": "Microsoft.Web/certificates",
+      "name": "[parameters('certificateName')]",
+      "apiVersion": "2016-03-01",
+      "location": "[parameters('location')]",
+      "properties": {
+        "keyVaultId": "[parameters('existingKeyVaultId')]",
+        "keyVaultSecretName": "[parameters('existingKeyVaultSecretName')]",
+        "serverFarmId": "[parameters('existingServerFarmId')]"
       }
     }
   ]
