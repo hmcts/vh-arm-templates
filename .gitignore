@@ -7,6 +7,8 @@
 
 # User-specific files
 *.suo
+.suo
+.dtbcache
 *.user
 *.userosscache
 *.sln.docstates
