@@ -4,16 +4,22 @@
   "parameters": {
 
     "appServicePlanName": {
-      "value": "vh-core-infra-preview"
+      "value": "webAppPortalName"
     },
     "webAppPortalName": {
-      "value": "jb-site"
+      "value": "webAppPortalName"
     },
     "allowedCorsOrigins": {
       "value": [
         "http://localhost",
         "https://localhost"
       ]
+    },
+    "certificateName": {
+      "value": "certificateName"
+    },
+    "customHostname": {
+      "value": "customHostname"
     }
   }
 }

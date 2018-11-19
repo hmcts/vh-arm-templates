@@ -39,14 +39,25 @@
         "description": "Location for all resources."
       }
     },
-
     "certificateName": {
       "type": "string",
-      "defaultValue": "certificateName",
+      "defaultValue": "certificateName"
+    },
+    "KeyVaultId": {
+      "type": "string",
       "metadata": {
-        "description": "Location for all resources."
+        "description": "ID of the existing Key Vault"
+      }
+    },
+    "KeyVaultSecretName": {
+      "type": "string",
+      "metadata": {
+        "description": "Key Vault secret name that contains pfx"
       }
     }
+  },
+  "variables": {
+    "ServerFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('appServicePlanName'))]"
   },
   "resources": [
     {
@@ -73,10 +84,19 @@
       "apiVersion": "2016-03-01",
       "location": "[parameters('location')]",
       "properties": {
-        "keyVaultId": "[parameters('existingKeyVaultId')]",
-        "keyVaultSecretName": "[parameters('existingKeyVaultSecretName')]",
-        "serverFarmId": "[parameters('existingServerFarmId')]"
-      }
+        "keyVaultId": "[parameters('KeyVaultId')]",
+        "keyVaultSecretName": "[parameters('KeyVaultSecretName')]",
+        "serverFarmId": "[variables('ServerFarmId')]"
+      },
+      "dependsOn": [
+        "[concat('Microsoft.Web/serverfarms/', parameters('appServicePlanName'))]"
+      ]
     }
-  ]
+  ],
+  "outputs": {
+    "CertificateThumbprint": {
+      "value": "[reference(resourceId(parameters('appServicePlanName'),'Microsoft.Web/certificates/', parameters('certificateName')), '2018-02-01').thumbprint]",
+      "type": "string"
+    }
+  }
 }

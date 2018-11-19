@@ -31,10 +31,23 @@
     "httpsOnly": {
       "type": "bool",
       "defaultValue": true
+    },
+    "certificateName": {
+      "type": "string",
+      "defaultValue": "certificateName",
+      "metadata": {
+        "description": "Certificate name that has been imported on App Service Plan"
+      }
+    },
+    "customHostname": {
+      "type": "string",
+      "defaultValue": "customHostname",
+      "metadata": {
+        "description": "Custom Hostname when custom domain name is used"
+      }
     }
   },
   "variables": {
-
 
   },
   "resources": [
@@ -84,7 +97,22 @@
       "dependsOn": [
         "[resourceId('Microsoft.Web/Sites', parameters('webAppPortalName'))]"
       ]
+    },
+    {
+      "condition": "[not(equals(parameters('customHostname'), 'customHostname'))]",
+      "type": "Microsoft.Web/sites/hostnameBindings",
+      "name": "[concat(parameters('webAppPortalName'), '/', parameters('customHostname'))]",
+      "apiVersion": "2016-03-01",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "sslState": "SniEnabled",
+        "thumbprint": "[reference(concat('Microsoft.Web/certificates/', parameters('certificateName')), '2018-02-01').thumbprint]"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/Sites', parameters('webAppPortalName'))]"
+      ]
     }
+
 
   ],
   "outputs": {
