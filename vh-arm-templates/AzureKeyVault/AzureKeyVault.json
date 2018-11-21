@@ -88,7 +88,7 @@
   ],
   "outputs": {
     "AzureKeyVaultResourceId": {
-      "value": "[resourceId('Microsoft.KeyVault/vaults/', parameters('certificateName'))]",
+      "value": "[resourceId('Microsoft.KeyVault/vaults/', parameters('keyVaultName'))]",
       "type": "string"
     }
   }
