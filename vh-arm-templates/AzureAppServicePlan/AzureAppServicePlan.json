@@ -94,9 +94,5 @@
     }
   ],
   "outputs": {
-    "CertificateThumbprint": {
-      "value": "[reference(resourceId(parameters('appServicePlanName'),'Microsoft.Web/certificates/', parameters('certificateName')), '2018-02-01').thumbprint]",
-      "type": "string"
-    }
   }
 }

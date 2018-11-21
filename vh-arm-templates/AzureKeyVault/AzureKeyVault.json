@@ -85,5 +85,11 @@
         }
       }
     }
-  ]
+  ],
+  "outputs": {
+    "AzureKeyVaultResourceId": {
+      "value": "resourceId(parameters('appServicePlanName'),'Microsoft.KeyVault/vaults/', parameters('certificateName'))",
+      "type": "string"
+    }
+  }
 }
