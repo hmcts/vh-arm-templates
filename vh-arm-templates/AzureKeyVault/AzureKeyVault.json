@@ -82,7 +82,6 @@
           {
             "tenantId": "[parameters('tenantId')]",
             "objectId": "abfa0a7c-a6b6-4736-8310-5855508787cd",
-            "applicationId": "abfa0a7c-a6b6-4736-8310-5855508787cd",
             "permissions": {
               "secrets": ["get"],
               "certificates":["get"],
