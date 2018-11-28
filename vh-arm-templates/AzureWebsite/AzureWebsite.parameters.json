@@ -4,16 +4,22 @@
   "parameters": {
 
     "appServicePlanName": {
-      "value": "vh-core-infra-preview"
+      "value": "appServicePlanName"
     },
     "webAppPortalName": {
-      "value": "jb-site"
+      "value": "webAppPortalName"
     },
     "allowedCorsOrigins": {
       "value": [
         "http://localhost",
         "https://localhost"
       ]
+    },
+    "KeyVaultCertificateSecretName": {
+      "value": "KeyVaultCertificateSecretName"
+    },
+    "customHostname": {
+      "value": "customHostname"
     }
   }
 }

@@ -31,13 +31,47 @@
     "httpsOnly": {
       "type": "bool",
       "defaultValue": true
+    },
+    "KeyVaultCertificateSecretName": {
+      "type": "string",
+      "defaultValue": "KeyVaultCertificateSecretName",
+      "metadata": {
+        "description": "The secret name under the SSL Certificate is stored in the Key Vault"
+      }
+    },
+    "certificateThumbprint": {
+      "type": "string",
+      "defaultValue": "KeyVaultCertificateSecretName",
+      "metadata": {
+        "description": "The secret name under the SSL Certificate is stored in the Key Vault"
+      }
+    },
+    "customHostname": {
+      "type": "string",
+      "defaultValue": "customHostname",
+      "metadata": {
+        "description": "Custom Hostname when custom domain name is used"
+      }
     }
   },
   "variables": {
-
+    "KeyVaultName": "[parameters('appServicePlanName')]",
+    "certificateName": "[parameters('KeyVaultCertificateSecretName')]"
 
   },
   "resources": [
+    {
+      "condition": "[not(equals(parameters('KeyVaultCertificateSecretName'), 'KeyVaultCertificateSecretName'))]",
+      "type": "Microsoft.Web/certificates",
+      "name": "[variables('certificateName')]",
+      "apiVersion": "2016-03-01",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "keyVaultId": "[resourceId(parameters('appServicePlanName'), 'Microsoft.KeyVault/vaults', variables('KeyVaultName'))]",
+        "keyVaultSecretName": "[parameters('KeyVaultCertificateSecretName')]",
+        "serverFarmId": "[resourceId(parameters('appServicePlanName'), 'Microsoft.Web/serverfarms', parameters('appServicePlanName'))]"
+      }
+},
     {
       "apiVersion": "2016-08-01",
       "type": "Microsoft.Web/sites",
@@ -84,7 +118,23 @@
       "dependsOn": [
         "[resourceId('Microsoft.Web/Sites', parameters('webAppPortalName'))]"
       ]
+    },
+    {
+      "condition": "[not(equals(parameters('customHostname'), 'customHostname'))]",
+      "type": "Microsoft.Web/sites/hostnameBindings",
+      "name": "[concat(parameters('webAppPortalName'), '/', parameters('customHostname'))]",
+      "apiVersion": "2018-02-01",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "sslState": "SniEnabled",
+        "thumbprint": "[parameters('certificateThumbprint')]"
+
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/Sites', parameters('webAppPortalName'))]"
+      ]
     }
+
 
   ],
   "outputs": {
