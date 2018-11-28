@@ -4,7 +4,7 @@
   "parameters": {
 
     "appServicePlanName": {
-      "value": "webAppPortalName"
+      "value": "appServicePlanName"
     },
     "webAppPortalName": {
       "value": "webAppPortalName"
@@ -15,8 +15,8 @@
         "https://localhost"
       ]
     },
-    "certificateName": {
-      "value": "certificateName"
+    "KeyVaultCertificateSecretName": {
+      "value": "KeyVaultCertificateSecretName"
     },
     "customHostname": {
       "value": "customHostname"
