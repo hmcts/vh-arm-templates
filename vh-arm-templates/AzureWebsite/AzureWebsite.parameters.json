@@ -18,6 +18,9 @@
     "KeyVaultCertificateSecretName": {
       "value": "KeyVaultCertificateSecretName"
     },
+    "certificateThumbprint": {
+      "value": "certificateThumbprint"
+    },
     "customHostname": {
       "value": "customHostname"
     }
