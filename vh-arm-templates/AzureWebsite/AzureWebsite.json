@@ -55,7 +55,7 @@
     }
   },
   "variables": {
-    "KeyVaultName": "[parameters('appServicePlanName')]",
+    "keyVaultName": "[replace(parameters('appServicePlanName'),'-', '')]",
     "certificateName": "[parameters('KeyVaultCertificateSecretName')]"
 
   },
