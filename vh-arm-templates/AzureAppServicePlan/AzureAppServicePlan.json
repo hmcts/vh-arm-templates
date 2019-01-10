@@ -45,13 +45,6 @@
       "metadata": {
         "description": "The secret name under the SSL Certificate is stored in the Key Vault"
       }
-    },
-    "certificateThumbprint": {
-      "type": "string",
-      "defaultValue": "KeyVaultCertificateSecretName",
-      "metadata": {
-        "description": "The secret name under the SSL Certificate is stored in the Key Vault"
-      }
     }
   },
   "variables": {
