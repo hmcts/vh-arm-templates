@@ -38,7 +38,25 @@
       "metadata": {
         "description": "Location for all resources."
       }
+    },
+    "KeyVaultCertificateSecretName": {
+      "type": "string",
+      "defaultValue": "KeyVaultCertificateSecretName",
+      "metadata": {
+        "description": "The secret name under the SSL Certificate is stored in the Key Vault"
+      }
+    },
+    "certificateThumbprint": {
+      "type": "string",
+      "defaultValue": "KeyVaultCertificateSecretName",
+      "metadata": {
+        "description": "The secret name under the SSL Certificate is stored in the Key Vault"
+      }
     }
+  },
+  "variables": {
+    "keyVaultName": "[replace(parameters('appServicePlanName'),'-', '')]",
+    "certificateName": "[parameters('KeyVaultCertificateSecretName')]"
   },
   "resources": [
     {
@@ -56,6 +74,18 @@
       "sku": {
         "name": "[parameters('sku')]",
         "tier": "[parameters('tier')]"
+      }
+    },
+    {
+      "condition": "[not(equals(parameters('KeyVaultCertificateSecretName'), 'KeyVaultCertificateSecretName'))]",
+      "type": "Microsoft.Web/certificates",
+      "name": "[variables('certificateName')]",
+      "apiVersion": "2016-03-01",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "keyVaultId": "[resourceId(parameters('appServicePlanName'), 'Microsoft.KeyVault/vaults', variables('KeyVaultName'))]",
+        "keyVaultSecretName": "[parameters('KeyVaultCertificateSecretName')]",
+        "serverFarmId": "[resourceId(parameters('appServicePlanName'), 'Microsoft.Web/serverfarms', parameters('appServicePlanName'))]"
       }
     }
   ]

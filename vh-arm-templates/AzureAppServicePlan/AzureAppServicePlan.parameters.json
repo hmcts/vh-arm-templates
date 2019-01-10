@@ -10,6 +10,12 @@
     },
     "tier": {
       "value": "standard"
+    },
+    "KeyVaultCertificateSecretName": {
+      "value": "wildcard-hearings-reform-hmcts-net"
+    },
+    "certificateThumbprint": {
+      "value": "4AEDAC9BE2A2927DE9F677B8FF4C75609FCEC9A8"
     }
 
   }
