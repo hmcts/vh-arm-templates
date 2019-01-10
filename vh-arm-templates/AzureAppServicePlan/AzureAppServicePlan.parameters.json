@@ -10,7 +10,9 @@
     },
     "tier": {
       "value": "standard"
+    },
+    "KeyVaultCertificateSecretName": {
+      "value": "KeyVaultCertificateSecretName"
     }
-
   }
 }
