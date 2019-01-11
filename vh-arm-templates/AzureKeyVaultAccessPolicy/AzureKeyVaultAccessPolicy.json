@@ -43,7 +43,9 @@
             "tenantId": "[parameters('tenantId')]",
             "objectId": "[parameters('objectId')]",
             "permissions": {
-              "secrets": "[parameters('secretsPermissions')]"
+              "secrets": "[parameters('secretsPermissions')]",
+              "certificates":["get"],
+              "keys":["get"]
             }
           }
         ]

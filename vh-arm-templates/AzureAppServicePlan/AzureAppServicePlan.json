@@ -39,17 +39,25 @@
         "description": "Location for all resources."
       }
     },
-    "KeyVaultCertificateSecretName": {
+    "certificateName": {
       "type": "string",
-      "defaultValue": "KeyVaultCertificateSecretName",
+      "defaultValue": "certificateName"
+    },
+    "KeyVaultId": {
+      "type": "string",
       "metadata": {
-        "description": "The secret name under the SSL Certificate is stored in the Key Vault"
+        "description": "ID of the existing Key Vault"
+      }
+    },
+    "KeyVaultSecretName": {
+      "type": "string",
+      "metadata": {
+        "description": "Key Vault secret name that contains pfx"
       }
     }
   },
   "variables": {
-    "keyVaultName": "[replace(parameters('appServicePlanName'),'-', '')]",
-    "certificateName": "[parameters('KeyVaultCertificateSecretName')]"
+    "ServerFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('appServicePlanName'))]"
   },
   "resources": [
     {
@@ -70,16 +78,21 @@
       }
     },
     {
-      "condition": "[not(equals(parameters('KeyVaultCertificateSecretName'), 'KeyVaultCertificateSecretName'))]",
+      "condition": "[not(equals(parameters('certificateName'), 'certificateName'))]",
       "type": "Microsoft.Web/certificates",
-      "name": "[variables('certificateName')]",
+      "name": "[parameters('certificateName')]",
       "apiVersion": "2016-03-01",
-      "location": "[resourceGroup().location]",
+      "location": "[parameters('location')]",
       "properties": {
-        "keyVaultId": "[resourceId(parameters('appServicePlanName'), 'Microsoft.KeyVault/vaults', variables('KeyVaultName'))]",
-        "keyVaultSecretName": "[parameters('KeyVaultCertificateSecretName')]",
-        "serverFarmId": "[resourceId(parameters('appServicePlanName'), 'Microsoft.Web/serverfarms', parameters('appServicePlanName'))]"
-      }
+        "keyVaultId": "[parameters('KeyVaultId')]",
+        "keyVaultSecretName": "[parameters('KeyVaultSecretName')]",
+        "serverFarmId": "[variables('ServerFarmId')]"
+      },
+      "dependsOn": [
+        "[concat('Microsoft.Web/serverfarms/', parameters('appServicePlanName'))]"
+      ]
     }
-  ]
+  ],
+  "outputs": {
+  }
 }

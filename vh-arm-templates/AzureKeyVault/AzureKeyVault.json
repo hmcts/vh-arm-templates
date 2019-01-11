@@ -78,12 +78,28 @@
         "enabledForDiskEncryption": "[parameters('enableVaultForDiskEncryption')]",
         "enabledForTemplateDeployment": "[parameters('enabledForTemplateDeployment')]",
         "tenantId": "[parameters('tenantId')]",
-        "accessPolicies": [],
+        "accessPolicies": [
+          {
+            "tenantId": "[parameters('tenantId')]",
+            "objectId": "abfa0a7c-a6b6-4736-8310-5855508787cd",
+            "permissions": {
+              "secrets": ["get"],
+              "certificates":["get"],
+              "keys":["get"]
+            }
+          }
+        ],
         "sku": {
           "name": "[parameters('skuName')]",
           "family": "A"
         }
       }
     }
-  ]
+  ],
+  "outputs": {
+    "AzureKeyVaultResourceId": {
+      "value": "[resourceId('Microsoft.KeyVault/vaults/', parameters('keyVaultName'))]",
+      "type": "string"
+    }
+  }
 }

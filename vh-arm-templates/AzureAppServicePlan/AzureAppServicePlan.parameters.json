@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "appServicePlanName": {
-      "value": "ServicePlan"
+      "value": "appServicePlanName"
     },
     "sku": {
       "value": "S1"
@@ -11,8 +11,14 @@
     "tier": {
       "value": "standard"
     },
-    "KeyVaultCertificateSecretName": {
-      "value": "KeyVaultCertificateSecretName"
+    "KeyVaultSecretName": {
+      "value": "KeyVaultSecretName"
+    },
+    "KeyVaultId": {
+      "value": "KeyVaultId"
+    },
+    "certificateName": {
+      "value": "certificateName"
     }
   }
 }
