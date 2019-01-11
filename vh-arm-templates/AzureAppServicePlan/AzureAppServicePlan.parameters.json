@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "appServicePlanName": {
-      "value": "vh-core-infra-test"
+      "value": "appServicePlanName"
     },
     "sku": {
       "value": "S1"
@@ -12,10 +12,10 @@
       "value": "standard"
     },
     "KeyVaultSecretName": {
-      "value": "wildcard-hearings-reform-hmcts-net"
+      "value": "KeyVaultSecretName"
     },
     "KeyVaultId": {
-      "value": "/subscriptions/705b2731-0e0b-4df7-8630-95f157f0a347/resourceGroups/vh-core-infra-test/providers/Microsoft.KeyVault/vaults/vhcoreinfratest"
+      "value": "KeyVaultId"
     }
   }
 }
