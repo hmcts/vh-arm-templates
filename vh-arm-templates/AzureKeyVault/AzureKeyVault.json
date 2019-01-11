@@ -81,11 +81,11 @@
         "accessPolicies": [
           {
             "tenantId": "[parameters('tenantId')]",
-            "objectId": "abfa0a7c-a6b6-4736-8310-5855508787cd",
+            "objectId": "20a66321-932e-4d33-a316-682849a06d68",
             "permissions": {
-              "secrets": ["get"],
-              "certificates":["get"],
-              "keys":["get"]
+              "secrets": [ "get" ],
+              "certificates": [ "get" ],
+              "keys": [ "get" ]
             }
           }
         ],

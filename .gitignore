@@ -20,6 +20,7 @@ obj
 .sonarqube
 HearingsAPI/Artifacts
 HearingsAPI.UnitTests\TestResults
+.vs/
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
