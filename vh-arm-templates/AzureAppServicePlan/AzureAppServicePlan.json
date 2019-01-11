@@ -39,10 +39,6 @@
         "description": "Location for all resources."
       }
     },
-    "certificateName": {
-      "type": "string",
-      "defaultValue": "certificateName"
-    },
     "KeyVaultId": {
       "type": "string",
       "metadata": {
@@ -57,7 +53,8 @@
     }
   },
   "variables": {
-    "ServerFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('appServicePlanName'))]"
+    "ServerFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('appServicePlanName'))]",
+    "certificateName": "[parameters('KeyVaultSecretName')]"
   },
   "resources": [
     {
@@ -78,9 +75,9 @@
       }
     },
     {
-      "condition": "[not(equals(parameters('certificateName'), 'certificateName'))]",
+      "condition": "[not(equals(variables('certificateName'), 'certificateName'))]",
       "type": "Microsoft.Web/certificates",
-      "name": "[parameters('certificateName')]",
+      "name": "[variables('certificateName')]",
       "apiVersion": "2018-02-01",
       "location": "[parameters('location')]",
       "properties": {
