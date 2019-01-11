@@ -81,7 +81,7 @@
       "condition": "[not(equals(parameters('certificateName'), 'certificateName'))]",
       "type": "Microsoft.Web/certificates",
       "name": "[parameters('certificateName')]",
-      "apiVersion": "2016-03-01",
+      "apiVersion": "2018-02-01",
       "location": "[parameters('location')]",
       "properties": {
         "keyVaultId": "[parameters('KeyVaultId')]",
