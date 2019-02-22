@@ -32,6 +32,10 @@
       "type": "bool",
       "defaultValue": true
     },
+    "webSocketsEnabled": {
+      "type": "bool",
+      "defaultValue": false
+    },
     "certificateThumbprint": {
       "type": "string",
       "defaultValue": "KeyVaultCertificateSecretName",
@@ -65,6 +69,7 @@
         "serverFarmId": "[resourceId(parameters('appServicePlanName'), 'Microsoft.Web/serverfarms', parameters('appServicePlanName'))]",
         "siteConfig": {
           "phpVersion": "",
+          "webSocketsEnabled ": "[parameters('webSocketsEnabled')]",
           "minTlsVersion": "[parameters('minTlsVersion')]",
           "cors": {
             "allowedOrigins": "[parameters('allowedCorsOrigins')]"
@@ -89,6 +94,7 @@
         "serverFarmId": "[resourceId(parameters('appServicePlanName'), 'Microsoft.Web/serverfarms', parameters('appServicePlanName'))]",
         "siteConfig": {
           "phpVersion": "",
+          "webSocketsEnabled ": "[parameters('webSocketsEnabled')]",
           "minTlsVersion": "[parameters('minTlsVersion')]",
           "cors": {
             "allowedOrigins": "[parameters('allowedCorsOrigins')]"
