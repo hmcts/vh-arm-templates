@@ -33,8 +33,7 @@
       "defaultValue": true
     },
     "webSocketsEnabled": {
-      "type": "bool",
-      "defaultValue": false
+      "type": "bool"
     },
     "certificateThumbprint": {
       "type": "string",
