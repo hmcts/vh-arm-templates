@@ -67,7 +67,7 @@
       },
       "properties": {
         "serverFarmId": "[resourceId(parameters('appServicePlanName'), 'Microsoft.Web/serverfarms', parameters('appServicePlanName'))]",
-        "siteProperties": {
+        "siteConfig": {
           "phpVersion": "",
           "webSocketsEnabled ": true,
           "use32BitWorkerProcess": false,
@@ -96,6 +96,9 @@
         "serverFarmId": "[resourceId(parameters('appServicePlanName'), 'Microsoft.Web/serverfarms', parameters('appServicePlanName'))]",
         "siteConfig": {
           "phpVersion": "",
+          "webSocketsEnabled ": true,
+          "use32BitWorkerProcess": false,
+          "alwaysOn": true,
           "webSocketsEnabled ": "[parameters('webSocketsEnabled')]",
           "minTlsVersion": "[parameters('minTlsVersion')]",
           "cors": {
