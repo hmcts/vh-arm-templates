@@ -67,12 +67,11 @@
       },
       "properties": {
         "serverFarmId": "[resourceId(parameters('appServicePlanName'), 'Microsoft.Web/serverfarms', parameters('appServicePlanName'))]",
-        "phpVersion": "",
-        "webSocketsEnabled ": true,
-        "use32BitWorkerProcess": false,
-        "alwaysOn": true,
         "siteConfig": {
-
+          "phpVersion": "",
+          "webSocketsEnabled": true,
+          "use32BitWorkerProcess": false,
+          "alwaysOn": true,
           "minTlsVersion": "[parameters('minTlsVersion')]",
           "cors": {
             "allowedOrigins": "[parameters('allowedCorsOrigins')]"
@@ -95,11 +94,11 @@
       },
       "properties": {
         "serverFarmId": "[resourceId(parameters('appServicePlanName'), 'Microsoft.Web/serverfarms', parameters('appServicePlanName'))]",
-        "webSocketsEnabled ": true,
-        "use32BitWorkerProcess": false,
-        "alwaysOn": true,
         "siteConfig": {
           "phpVersion": "",
+          "webSocketsEnabled": true,
+          "use32BitWorkerProcess": false,
+          "alwaysOn": true,
           "minTlsVersion": "[parameters('minTlsVersion')]",
           "cors": {
             "allowedOrigins": "[parameters('allowedCorsOrigins')]"
