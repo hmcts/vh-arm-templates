@@ -20,7 +20,7 @@ steps:
     azureSubscription: 'Reform-CFT-VH-Dev'
     ScriptType: InlineScript
     Inline: |
-      $armTemplateFolders = Get-ChildItem -Path .\vh-arm-templates\* -Directory
+      $armTemplateFolders = Get-ChildItem -Path $(Build.SourcesDirectory)\vh-arm-templates\* -Directory
         
       foreach ($folder in $armTemplateFolders){
       Write-Output ("Validating templae {0}" -f $folder.Name)
