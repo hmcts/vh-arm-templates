@@ -79,8 +79,7 @@
         },
         "httpsOnly": "[parameters('httpsOnly')]"
       },
-      "dependsOn": [
-      ]
+      "dependsOn": []
     },
     {
       "apiVersion": "2016-08-01",
@@ -119,15 +118,11 @@
       "properties": {
         "sslState": "SniEnabled",
         "thumbprint": "[parameters('certificateThumbprint')]"
-
       },
       "dependsOn": [
         "[resourceId('Microsoft.Web/Sites', parameters('webAppPortalName'))]"
       ]
     }
-
-
   ],
-  "outputs": {
-  }
+  "outputs": {}
 }
