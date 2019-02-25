@@ -24,8 +24,7 @@ steps:
         
       foreach ($folder in $armTemplateFolders){
       Write-Output ("Validating templae {0}" -f $folder.Name)
-      Test-AzureRmResourceGroupDeployment -ResourceGroupName vh-arm-templates -Mode Incremental -TemplateFile ($folder.fullname + '\' + '*.json') -TemplateParameterFile ($folder.fullname + '\' + '*.parameters.json') -Verbose
-      }
+      Test-AzureRmResourceGroupDeployment -ResourceGroupName vh-arm-templates -Mode Incremental -TemplateFile (($folder | Resolve-Path -Relative) + '\' + '*.json') -TemplateParameterFile (($folder | Resolve-Path -Relative) + '\' + '*.parameters.json') -Verbose      }
     azurePowerShellVersion: LatestVersion
 
 
