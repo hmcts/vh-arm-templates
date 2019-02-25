@@ -69,7 +69,7 @@
         "serverFarmId": "[resourceId(parameters('appServicePlanName'), 'Microsoft.Web/serverfarms', parameters('appServicePlanName'))]",
         "siteConfig": {
           "phpVersion": "",
-          "webSocketsEnabled ": "[parameters('webSocketsEnabled')]",
+          "webSocketsEnabled ": true,
           "minTlsVersion": "[parameters('minTlsVersion')]",
           "cors": {
             "allowedOrigins": "[parameters('allowedCorsOrigins')]"
