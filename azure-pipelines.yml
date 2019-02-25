@@ -8,8 +8,7 @@ trigger:
 pr:
 - master
 
-pool: 'Azure-VSTS-VS2017'
-
+pool: Azure-VSTS-VS2017
 
 steps:
 - script: echo Hello, world!
