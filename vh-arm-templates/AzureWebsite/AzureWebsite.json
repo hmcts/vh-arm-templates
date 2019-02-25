@@ -69,7 +69,7 @@
         "serverFarmId": "[resourceId(parameters('appServicePlanName'), 'Microsoft.Web/serverfarms', parameters('appServicePlanName'))]",
         "siteConfig": {
           "phpVersion": "",
-          "webSocketsEnabled": true,
+          "webSocketsEnabled": "[parameters('webSocketsEnabled')]",
           "use32BitWorkerProcess": false,
           "alwaysOn": true,
           "minTlsVersion": "[parameters('minTlsVersion')]",
@@ -96,7 +96,7 @@
         "serverFarmId": "[resourceId(parameters('appServicePlanName'), 'Microsoft.Web/serverfarms', parameters('appServicePlanName'))]",
         "siteConfig": {
           "phpVersion": "",
-          "webSocketsEnabled": true,
+          "webSocketsEnabled": "[parameters('webSocketsEnabled')]",
           "use32BitWorkerProcess": false,
           "alwaysOn": true,
           "minTlsVersion": "[parameters('minTlsVersion')]",
