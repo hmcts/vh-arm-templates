@@ -8,7 +8,7 @@
         "description": "Name of the Vault"
       }
     },
-    "tenantId": {
+    "tenantI": {
       "type": "string",
       "defaultValue": "[subscription().tenantId]",
       "metadata": {
