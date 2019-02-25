@@ -70,6 +70,8 @@
         "siteConfig": {
           "phpVersion": "",
           "webSocketsEnabled ": true,
+          "use32BitWorkerProcess": false,
+          "alwaysOn": true,
           "minTlsVersion": "[parameters('minTlsVersion')]",
           "cors": {
             "allowedOrigins": "[parameters('allowedCorsOrigins')]"
