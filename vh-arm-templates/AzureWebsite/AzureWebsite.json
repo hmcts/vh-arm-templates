@@ -67,7 +67,7 @@
       },
       "properties": {
         "serverFarmId": "[resourceId(parameters('appServicePlanName'), 'Microsoft.Web/serverfarms', parameters('appServicePlanName'))]",
-        "siteConfig": {
+        "siteProperties": {
           "phpVersion": "",
           "webSocketsEnabled ": true,
           "use32BitWorkerProcess": false,
