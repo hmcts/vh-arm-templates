@@ -53,7 +53,7 @@
   },
   "resources": [
     {
-      "name": "[concat(parameters('MSSQLDBServerName'), '/', parameters('MSSQLDBName'))]",
+      "name": "[concat(string(parameters('MSSQLDBServerName')), '/', string(parameters('MSSQLDBName')))]",
       "type": "Microsoft.Sql/servers/databases",
       "location": "[resourceGroup().location]",
       "apiVersion": "2014-04-01-preview",
