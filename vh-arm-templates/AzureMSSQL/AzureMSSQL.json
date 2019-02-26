@@ -25,7 +25,7 @@
         "Premium_LRS"
       ]
     },
-    "EmailAddresses": {
+    "MSSQLEmailAddresses": {
       "type": "string"
     },
     "MSSQLRetentionDays": {
@@ -67,7 +67,7 @@
   },
   "variables": {
     "MSSQLAdminLoginPassword": "[concat('P', uniqueString(resourceGroup().id, '224F5A8B-51DB-46A3-A7C8-59B0DD584A41'), 'x', '!')]",
-    "emailAddresses": "[parameters('EmailAddresses')]",
+    "emailAddresses": "[parameters('MSSQLEmailAddresses')]",
     "storageAccountName": "[replace(parameters('MSSQLDBServerName'),'-', '')]"
 
   },
