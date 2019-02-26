@@ -18,7 +18,7 @@
     "MSSQLRequestedServiceObjectiveName": {
       "value": "S2"
     },
-    "EmailAddresses": {
+    "MSSQLEmailAddresses": {
       "value": "some.email@emails.com"
     }
   }
