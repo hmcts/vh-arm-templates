@@ -5,15 +5,27 @@
 
 trigger:
 - master
+pr:
+- master
 
-pool:
-  vmImage: 'Ubuntu-16.04'
+pool: Azure-VSTS-VS2017
 
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+- task: AzurePowerShell@3
+  displayName: 'Validate ARM Templates'
+  inputs:
+    azureSubscription: 'Reform-CFT-VH-Dev'
+    ScriptType: InlineScript
+    Inline: |
+      $armTemplateFolders = Get-ChildItem -Path $(Build.SourcesDirectory)\vh-arm-templates\* -Directory
+        
+      foreach ($folder in $armTemplateFolders){
+      Write-Output ("Validating templae {0}" -f $folder.Name)
+      Test-AzureRmResourceGroupDeployment -ResourceGroupName vh-arm-templates -Mode Incremental -TemplateFile (($folder | Resolve-Path -Relative) + '\' + '*.json') -TemplateParameterFile (($folder | Resolve-Path -Relative) + '\' + '*.parameters.json') -Verbose      }
+    azurePowerShellVersion: LatestVersion
+
+
+
