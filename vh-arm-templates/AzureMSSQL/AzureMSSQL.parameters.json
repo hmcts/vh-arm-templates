@@ -9,6 +9,9 @@
     "MSSQLDBName": {
       "value": "mssqldbname"
     },
+    "MSSQLDBBookings": {
+      "value": "mssqldbname"
+    },
     "MSSQLDBServerName": {
       "value": "mssql-db-server"
     },
@@ -18,7 +21,7 @@
     "MSSQLRequestedServiceObjectiveName": {
       "value": "S2"
     },
-    "EmailAddresses": {
+    "MSSQLEmailAddresses": {
       "value": "some.email@emails.com"
     }
   }

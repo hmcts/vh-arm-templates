@@ -24,7 +24,12 @@ steps:
         
       foreach ($folder in $armTemplateFolders){
       Write-Output ("Validating templae {0}" -f $folder.Name)
-      Test-AzureRmResourceGroupDeployment -ResourceGroupName vh-arm-templates -Mode Incremental -TemplateFile (($folder | Resolve-Path -Relative) + '\' + '*.json') -TemplateParameterFile (($folder | Resolve-Path -Relative) + '\' + '*.parameters.json') -Verbose      }
+      $result = Test-AzureRmResourceGroupDeployment -ResourceGroupName vh-arm-templates -Mode Incremental -TemplateFile (($folder | Resolve-Path -Relative) + '\' + '*.json') -TemplateParameterFile (($folder | Resolve-Path -Relative) + '\' + '*.parameters.json') -Verbose}
+      if ($result.Code -eq "InvalidTemplate"){
+
+      Write-Output ("##vso[task.logissue type=error] ARM template {0} is not valid!" -f $folder.Name )
+      Write-Output ("##vso[task.logissue type=error] ARM template {0} is not valid!" -f $result.Message )
+      }
     azurePowerShellVersion: LatestVersion
 
 
