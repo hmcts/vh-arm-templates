@@ -9,6 +9,9 @@
     "MSSQLDBName": {
       "value": "mssqldbname"
     },
+    "MSSQLDBBookings": {
+      "value": "mssqldbname"
+    },
     "MSSQLDBServerName": {
       "value": "mssql-db-server"
     },
