@@ -4,15 +4,6 @@
   "parameters": {
     "serviceBusNamespaceName": {
       "value": "serviceBusNamespaceName"
-    },
-    "BookingsQueueName": {
-      "value": "BookingsQueueName"
-    },
-    "VideoQueueName": {
-      "value": "VideoQueueName"
-    },
-    "serviceBusApiVersion": {
-      "value": "2017-04-01"
     }
   }
 }
