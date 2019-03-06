@@ -58,7 +58,6 @@
       "location": "[resourceGroup().location]",
       "apiVersion": "2014-04-01-preview",
       "dependsOn": [
-        "[resourceId('Microsoft.Sql/servers', parameters('MSSQLDBServerName'))]"
       ],
       "tags": {
         "displayName": "Database"
