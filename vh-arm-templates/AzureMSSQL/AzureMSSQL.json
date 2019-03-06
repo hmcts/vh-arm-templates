@@ -10,10 +10,6 @@
       "type": "string",
       "minLength": 1
     },
-    "MSSQLDBBookings": {
-      "type": "string",
-      "minLength": 1
-    },
     "MSSQLAdminLogin": {
       "type": "string",
       "minLength": 1
@@ -161,24 +157,6 @@
             "maxSizeBytes": "1073741824",
             "requestedServiceObjectiveName": "[parameters('MSSQLRequestedServiceObjectiveName')]"
           }
-        },
-        {
-          "name": "[parameters('MSSQLDBBookings')]",
-          "type": "databases",
-          "location": "[resourceGroup().location]",
-          "apiVersion": "2014-04-01-preview",
-          "dependsOn": [
-            "[resourceId('Microsoft.Sql/servers', parameters('MSSQLDBServerName'))]"
-          ],
-          "tags": {
-            "displayName": "Database"
-          },
-          "properties": {
-            "collation": "[parameters('MSSQLCollation')]",
-            "edition": "[parameters('MSSQLEdition')]",
-            "maxSizeBytes": "1073741824",
-            "requestedServiceObjectiveName": "[parameters('MSSQLRequestedServiceObjectiveName')]"
-          }
         }
 
       ]
@@ -201,10 +179,6 @@
   "outputs": {
     "DatabaseConnectionString": {
       "value": "[concat('Server=tcp:',reference(parameters('MSSQLDBServerName')).fullyQualifiedDomainName,',1433;Initial Catalog=',parameters('MSSQLDBName'),';Persist Security Info=False;User ID=',reference(parameters('MSSQLDBServerName')).administratorLogin,';Password=',variables('MSSQLAdminLoginPassword'),';MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;')]",
-      "type": "string"
-    },
-    "VhBookingsDatabaseConnectionString": {
-      "value": "[concat('Server=tcp:',reference(parameters('MSSQLDBServerName')).fullyQualifiedDomainName,',1433;Initial Catalog=',parameters('MSSQLDBBookings'),';Persist Security Info=False;User ID=',reference(parameters('MSSQLDBServerName')).administratorLogin,';Password=',variables('MSSQLAdminLoginPassword'),';MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;')]",
       "type": "string"
     },
     "MSSQLAdminLoginPassword": {

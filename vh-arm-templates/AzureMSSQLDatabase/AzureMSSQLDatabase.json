@@ -1,0 +1,81 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "MSSQLDBServerName": {
+      "type": "string",
+      "minLength": 1
+    },
+    "MSSQLDBName": {
+      "type": "string",
+      "minLength": 1
+    },
+    "MSSQLAdminLogin": {
+      "type": "string",
+      "minLength": 1
+    },
+    "MSSQLCollation": {
+      "type": "string",
+      "minLength": 1,
+      "defaultValue": "SQL_Latin1_General_CP1_CI_AS"
+    },
+    "MSSQLEdition": {
+      "type": "string",
+      "defaultValue": "Standard",
+      "allowedValues": [
+        "Basic",
+        "Standard",
+        "Premium"
+      ]
+    },
+    "MSSQLRequestedServiceObjectiveName": {
+      "type": "string",
+      "defaultValue": "Basic",
+      "allowedValues": [
+        "Basic",
+        "S0",
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "P1",
+        "P2",
+        "P3"
+      ],
+      "metadata": {
+        "description": "Describes the performance level for Edition"
+      }
+    }
+  },
+  "variables": {
+    "MSSQLAdminLoginPassword": "[concat('P', uniqueString(resourceGroup().id, '224F5A8B-51DB-46A3-A7C8-59B0DD584A41'), 'x', '!')]",
+    "storageAccountName": "[replace(parameters('MSSQLDBServerName'),'-', '')]"
+  },
+  "resources": [
+    {
+      "name": "[concat(parameters('MSSQLDBServerName'), '/', parameters('MSSQLDBName'))]",
+      "type": "Microsoft.Sql/servers/databases",
+      "location": "[resourceGroup().location]",
+      "apiVersion": "2014-04-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', parameters('MSSQLDBServerName'))]"
+      ],
+      "tags": {
+        "displayName": "Database"
+      },
+      "properties": {
+        "collation": "[parameters('MSSQLCollation')]",
+        "edition": "[parameters('MSSQLEdition')]",
+        "maxSizeBytes": "1073741824",
+        "requestedServiceObjectiveName": "[parameters('MSSQLRequestedServiceObjectiveName')]"
+      }
+    }
+  ],
+  "outputs": {
+
+    "MSSQLAdminLoginPassword": {
+      "value": "[variables('MSSQLAdminLoginPassword')]",
+      "type": "string"
+    }
+  }
+}
