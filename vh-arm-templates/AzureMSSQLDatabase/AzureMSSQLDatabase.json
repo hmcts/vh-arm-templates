@@ -44,10 +44,11 @@
     }
   },
   "variables": {
+    "MSSQLDBName": "toLower(parameters('MSSQLDBName'))"
   },
   "resources": [
     {
-      "name": "[concat(parameters('MSSQLDBServerName'), '/', parameters('MSSQLDBName'))]",
+      "name": "[concat(parameters('MSSQLDBServerName'), '/', variables('MSSQLDBName'))]",
       "type": "Microsoft.Sql/servers/databases",
       "location": "[resourceGroup().location]",
       "apiVersion": "2014-04-01-preview",
