@@ -44,7 +44,7 @@
     }
   },
   "variables": {
-    "MSSQLDBName": "toLower(parameters('MSSQLDBName'))"
+    "MSSQLDBName": "[toLower(parameters('MSSQLDBName'))]"
   },
   "resources": [
     {

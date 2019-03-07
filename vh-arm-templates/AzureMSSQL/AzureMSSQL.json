@@ -209,7 +209,7 @@
     },
     "MSSQLAdminLoginPassword": {
       "value": "[variables('MSSQLAdminLoginPassword')]",
-      "type": "string"
+      "type": "securestring"
     },
     "MSSQLDBServerFQDN": {
       "value": "[reference(parameters('MSSQLDBServerName')).fullyQualifiedDomainName]",
