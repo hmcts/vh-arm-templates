@@ -210,6 +210,10 @@
     "MSSQLAdminLoginPassword": {
       "value": "[variables('MSSQLAdminLoginPassword')]",
       "type": "string"
+    },
+    "MSSQLDBServerName": {
+      "value": "[parameters('MSSQLDBServerName')]",
+      "type": "string"
     }
   }
 }
