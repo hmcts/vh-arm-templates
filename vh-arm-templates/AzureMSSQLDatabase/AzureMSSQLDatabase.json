@@ -10,6 +10,10 @@
       "type": "string",
       "minLength": 1
     },
+    "MSSQLDBSize": {
+      "type": "string",
+      "defaultValue": "1073741824"
+    },
     "MSSQLCollation": {
       "type": "string",
       "minLength": 1,
@@ -26,7 +30,7 @@
     },
     "MSSQLRequestedServiceObjectiveName": {
       "type": "string",
-      "defaultValue": "Basic",
+      "defaultValue": "S0",
       "allowedValues": [
         "Basic",
         "S0",
@@ -60,7 +64,7 @@
       "properties": {
         "collation": "[parameters('MSSQLCollation')]",
         "edition": "[parameters('MSSQLEdition')]",
-        "maxSizeBytes": "1073741824",
+        "maxSizeBytes": "[parameters('MSSQLDBSize')]",
         "requestedServiceObjectiveName": "[parameters('MSSQLRequestedServiceObjectiveName')]"
       }
     }
