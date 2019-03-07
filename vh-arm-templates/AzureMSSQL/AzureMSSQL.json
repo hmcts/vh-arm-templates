@@ -211,9 +211,15 @@
       "value": "[variables('MSSQLAdminLoginPassword')]",
       "type": "string"
     },
-    "MSSQLDBServerName": {
-      "value": "[parameters('MSSQLDBServerName')]",
+    "MSSQLDBServerFQDN": {
+      "value": "[reference(parameters('MSSQLDBServerName')).fullyQualifiedDomainName]",
       "type": "string"
+    },
+    "MSSQLDBServerObject": {
+      "value": "[reference(parameters('MSSQLDBServerName'))]",
+      "type": "object"
     }
+
+
   }
 }
