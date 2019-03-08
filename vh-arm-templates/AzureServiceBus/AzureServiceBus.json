@@ -13,8 +13,7 @@
       "defaultValue": "2017-04-01"
     }
   },
-  "variables": {
-  },
+  "variables": {},
   "resources": [
     {
       "apiVersion": "[parameters('sbApiVersion')]",
@@ -25,12 +24,8 @@
         "name": "Standard"
       },
       "properties": {},
-      "resources": [
-
-      ]
+      "resources": []
     }
   ],
-  "outputs": {
-
-  }
+  "outputs": {}
 }
