@@ -13,8 +13,10 @@
       "defaultValue": "RootManageSharedAccessKeyManage"
     },
     "authorizationRules": {
-      "type": "string",
-      "defaultValue": "Manage"
+      "type": "array",
+      "defaultValue": [
+        "Manage"
+      ]
     },
     "sbApiVersion": {
       "type": "string",
@@ -30,9 +32,7 @@
       "type": "Microsoft.ServiceBus/namespaces/AuthorizationRules",
       "dependsOn": [],
       "properties": {
-        "rights": [
-          "[parameters('authorizationRules')]"
-        ]
+        "rights": "[parameters('authorizationRules')]"
       }
     }
   ],
