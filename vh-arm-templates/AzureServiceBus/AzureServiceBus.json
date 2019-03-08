@@ -7,104 +7,30 @@
       "metadata": {
         "description": "Name of the Service Bus namespace"
       }
+    },
+    "sbApiVersion": {
+      "type": "string",
+      "defaultValue": "2017-04-01"
     }
   },
   "variables": {
-    "defaultSASKeyName": "RootManageSharedAccessKey",
-    "authRuleResourceId": "[resourceId('Microsoft.ServiceBus/namespaces/authorizationRules', parameters('serviceBusNamespaceName'), variables('defaultSASKeyName'))]",
-    "sendAuthRuleResourceId": "[resourceId('Microsoft.ServiceBus/namespaces/authorizationRules', parameters('serviceBusNamespaceName'), 'SendOnlyKey')]",
-    "sbVersion": "2017-04-01",
-    "BookingsQueueName": "Booking",
-    "VideoQueueName": "Video"
   },
   "resources": [
     {
-      "apiVersion": "[variables('sbVersion')]",
+      "apiVersion": "[parameters('sbApiVersion')]",
       "name": "[parameters('serviceBusNamespaceName')]",
-      "type": "Microsoft.ServiceBus/Namespaces",
+      "type": "Microsoft.ServiceBus/namespaces",
       "location": "[resourceGroup().location]",
       "sku": {
         "name": "Standard"
       },
       "properties": {},
       "resources": [
-        {
-          "apiVersion": "[variables('sbVersion')]",
-          "name": "[variables('BookingsQueueName')]",
-          "type": "Queues",
-          "dependsOn": [
-            "[concat('Microsoft.ServiceBus/namespaces/', parameters('serviceBusNamespaceName'))]"
-          ],
-          "properties": {
-            "lockDuration": "PT5M",
-            "maxSizeInMegabytes": "1024",
-            "requiresDuplicateDetection": "false",
-            "requiresSession": "false",
-            "defaultMessageTimeToLive": "P10675199DT2H48M5.4775807S",
-            "deadLetteringOnMessageExpiration": "false",
-            "duplicateDetectionHistoryTimeWindow": "PT10M",
-            "maxDeliveryCount": "10",
-            "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S",
-            "enablePartitioning": "false",
-            "enableExpress": "false"
-          }
-        },
-        {
-          "apiVersion": "[variables('sbVersion')]",
-          "name": "[variables('VideoQueueName')]",
-          "type": "Queues",
-          "dependsOn": [
-            "[concat('Microsoft.ServiceBus/namespaces/', parameters('serviceBusNamespaceName'))]"
-          ],
-          "properties": {
-            "lockDuration": "PT5M",
-            "maxSizeInMegabytes": "1024",
-            "requiresDuplicateDetection": "false",
-            "requiresSession": "false",
-            "defaultMessageTimeToLive": "P10675199DT2H48M5.4775807S",
-            "deadLetteringOnMessageExpiration": "false",
-            "duplicateDetectionHistoryTimeWindow": "PT10M",
-            "maxDeliveryCount": "10",
-            "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S",
-            "enablePartitioning": "false",
-            "enableExpress": "false"
-          }
-        }
+
       ]
-    },
-    {
-      "apiVersion": "[variables('sbVersion')]",
-      "name": "[concat(parameters('serviceBusNamespaceName'),'/SendOnlyKey')]",
-      "type": "Microsoft.ServiceBus/namespaces/authorizationRules",
-      "dependsOn": [
-        "[concat('Microsoft.ServiceBus/namespaces/', parameters('serviceBusNamespaceName'))]",
-        "[concat('Microsoft.Resources/deployments/', 'primaryKey')]",
-        "[concat('Microsoft.Resources/deployments/', 'secondaryKey')]"
-      ],
-      "location": "[resourceGroup().location]",
-      "properties": {
-        "KeyName": "SendOnlyKey",
-        "ClaimType": "SendSharedAccessKey",
-        "ClaimValue": "None",
-        "PrimaryKey": "[reference('primaryKey').outputs.key.value]",
-        "SecondaryKey": "[reference('secondaryKey').outputs.key.value]",
-        "Rights": [ "Send" ],
-        "Revision": -1
-      }
     }
   ],
   "outputs": {
-    "ServiceBusNamespaceConnectionString": {
-      "type": "string",
-      "value": "[listkeys(variables('authRuleResourceId'), variables('sbVersion')).primaryConnectionString]"
-    },
-    "SharedAccessPolicyPrimaryKey": {
-      "type": "string",
-      "value": "[listkeys(variables('authRuleResourceId'), variables('sbVersion')).primaryKey]"
-    },
-    "SendOnlyConnectionString": {
-      "type": "string",
-      "value": "[listkeys(variables('sendAuthRuleResourceId'), variables('sbVersion')).primaryConnectionString]"
-    }
+
   }
 }
