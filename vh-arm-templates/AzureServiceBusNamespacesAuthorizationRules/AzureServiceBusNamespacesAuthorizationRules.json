@@ -32,7 +32,9 @@
       "type": "Microsoft.ServiceBus/namespaces/AuthorizationRules",
       "dependsOn": [],
       "properties": {
-        "rights": "[parameters('authorizationRules')]"
+        "rights": [
+          "Manage"
+        ]
       }
     }
   ],
