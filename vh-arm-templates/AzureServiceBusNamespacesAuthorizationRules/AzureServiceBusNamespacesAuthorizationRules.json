@@ -15,7 +15,8 @@
     "authorizationRules": {
       "type": "array",
       "defaultValue": [
-        "Manage"
+        "Manage",
+        "Listen"
       ]
     },
     "sbApiVersion": {
