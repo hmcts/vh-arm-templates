@@ -13,8 +13,11 @@
       "defaultValue": "RootManageSharedAccessKeyManage"
     },
     "authorizationRules": {
-      "type": "string",
-      "defaultValue": "[ "Manage", "Listen"]"
+      "type": "array",
+      "defaultValue": ["Listen"],
+      "metadata": {
+        "description": "Allowed value combinations are: Manage, Listen, Sand; Listen, Send; Listen; Send."
+      }
     },
     "sbApiVersion": {
       "type": "string",
