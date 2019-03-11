@@ -13,11 +13,8 @@
       "defaultValue": "RootManageSharedAccessKeyManage"
     },
     "authorizationRules": {
-      "type": "array",
-      "defaultValue": [
-        "Manage",
-        "Listen"
-      ]
+      "type": "string",
+      "defaultValue": "[ "Manage", "Listen"]"
     },
     "sbApiVersion": {
       "type": "string",
