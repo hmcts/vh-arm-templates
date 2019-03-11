@@ -33,7 +33,9 @@
       "dependsOn": [],
       "properties": {
         "rights": [
-          "Manage"
+          "Listen",
+          "Manage",
+          "Send"
         ]
       }
     }
