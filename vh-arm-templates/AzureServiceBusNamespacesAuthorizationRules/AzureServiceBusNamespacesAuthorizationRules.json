@@ -10,7 +10,7 @@
     },
     "authorizationRulesName": {
       "type": "string",
-      "defaultValue": "RootManageSharedAccessKeyManage"
+      "defaultValue": "RootManageSharedAccessKeyListen"
     },
     "authorizationRules": {
       "type": "array",
@@ -25,6 +25,7 @@
     }
   },
   "variables": {
+    "defaultAuthRuleResourceId": "[resourceId('Microsoft.ServiceBus/namespaces/authorizationRules', parameters('serviceBusNamespaceName'), parameters('authorizationRulesName'))]"
   },
   "resources": [
     {
@@ -37,5 +38,10 @@
       }
     }
   ],
-  "outputs": {}
+  "outputs": {
+    "NamespaceConnectionString": {
+      "type": "string",
+      "value": "[listkeys(variables('defaultAuthRuleResourceId'), parameters('sbApiVersion')).primaryConnectionString]"
+    }
+  }
 }
