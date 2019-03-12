@@ -1,0 +1,47 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "serviceBusNamespaceName": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of the Service Bus namespace"
+      }
+    },
+    "authorizationRulesName": {
+      "type": "string",
+      "defaultValue": "RootManageSharedAccessKeyListen"
+    },
+    "authorizationRules": {
+      "type": "array",
+      "defaultValue": ["Listen"],
+      "metadata": {
+        "description": "Allowed value combinations are: Manage, Listen, Sand; Listen, Send; Listen; Send."
+      }
+    },
+    "sbApiVersion": {
+      "type": "string",
+      "defaultValue": "2017-04-01"
+    }
+  },
+  "variables": {
+    "defaultAuthRuleResourceId": "[resourceId('Microsoft.ServiceBus/namespaces/authorizationRules', parameters('serviceBusNamespaceName'), parameters('authorizationRulesName'))]"
+  },
+  "resources": [
+    {
+      "apiVersion": "[parameters('sbApiVersion')]",
+      "name": "[concat(parameters('serviceBusNamespaceName'),'/', parameters('authorizationRulesName'))]",
+      "type": "Microsoft.ServiceBus/namespaces/AuthorizationRules",
+      "dependsOn": [],
+      "properties": {
+        "rights": "[parameters('authorizationRules')]"
+      }
+    }
+  ],
+  "outputs": {
+    "NamespaceConnectionString": {
+      "type": "string",
+      "value": "[listkeys(variables('defaultAuthRuleResourceId'), parameters('sbApiVersion')).primaryConnectionString]"
+    }
+  }
+}

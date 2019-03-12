@@ -1,0 +1,47 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "serviceBusNamespaceName": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of the Service Bus namespace"
+      }
+    },
+    "queueName": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of the Queue"
+      }
+    },
+    "sbApiVersion": {
+      "type": "string",
+      "defaultValue": "2017-04-01"
+    }
+  },
+  "variables": {
+  },
+  "resources": [
+
+    {
+      "apiVersion": "[parameters('sbApiVersion')]",
+      "name": "[concat(parameters('serviceBusNamespaceName'), '/', parameters('queueName'))]",
+      "type": "Microsoft.ServiceBus/namespaces/queues",
+      "dependsOn": [],
+      "properties": {
+        "lockDuration": "PT5M",
+        "maxSizeInMegabytes": "1024",
+        "requiresDuplicateDetection": "false",
+        "requiresSession": "false",
+        "defaultMessageTimeToLive": "P10675199DT2H48M5.4775807S",
+        "deadLetteringOnMessageExpiration": "false",
+        "duplicateDetectionHistoryTimeWindow": "PT10M",
+        "maxDeliveryCount": "10",
+        "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S",
+        "enablePartitioning": "false",
+        "enableExpress": "false"
+      }
+    }
+  ],
+  "outputs": {}
+}
