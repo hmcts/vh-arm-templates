@@ -49,8 +49,8 @@
       }
     },
     {
-      "type": "Microsoft.Web/sites/functions",
-      "apiVersion": "2018-02-01",
+      "apiVersion": "2016-08-01",
+      "type": "Microsoft.Web/sites",
       "name": "[variables('functionAppName')]",
       "location": "[parameters('location')]",
       "kind": "functionapp",
