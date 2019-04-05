@@ -5,8 +5,8 @@
     "appServicePlanName": {
       "value": "appServicePlanName"
     },
-    "functionAppName": {
-      "value": "functionAppName"
+    "webAppPortalName": {
+      "value": "webAppPortalName"
     }
   }
 }
