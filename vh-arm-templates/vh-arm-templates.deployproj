@@ -37,6 +37,8 @@
     <Content Include="VSTSBuildAgent\azuredeploy.parameters.json" />
     <None Include="AzureMSSQLDatabase\AzureMSSQLDatabase.json" />
     <None Include="AzureMSSQLDatabase\AzureMSSQLDatabase.parameters.json" />
+    <None Include="AzureFunction\AzureFunction.json" />
+    <None Include="AzureFunction\AzureFunction.parameters.json" />
     <None Include="AzureMSSQL\AzureMSSQL.json" />
     <None Include="AzureMSSQL\AzureMSSQL.parameters.json" />
     <None Include="AzureServiceBusNamespacesAuthorizationRules\AzureServiceBusNamespacesAuthorizationRules.json" />
