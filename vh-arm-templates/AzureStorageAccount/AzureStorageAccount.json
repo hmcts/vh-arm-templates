@@ -73,9 +73,5 @@
       }
     ],
     "outputs": {
-      "storageAccountName": {
-        "type": "string",
-        "value": "[reference(variables('storageAccountName')).fullyQualifiedDomainName]"
-      }
     }
   }
