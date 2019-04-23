@@ -47,6 +47,8 @@
     <None Include="AzureServiceBusNamespaces\AzureServiceBusNamespaces.parameters.json" />
     <None Include="AzureServiceBus\AzureServiceBus.json" />
     <None Include="AzureServiceBus\AzureServiceBus.parameters.json" />
+    <None Include="AzureStorageAccount\AzureStorageAccount.json" />
+    <None Include="AzureStorageAccount\AzureStorageAccount.parameters.json" />
     <None Include="AzureWebsite\AzureWebsite.json" />
     <None Include="AzureWebsite\AzureWebsite.parameters.json" />
     <None Include="Deployment.targets">
