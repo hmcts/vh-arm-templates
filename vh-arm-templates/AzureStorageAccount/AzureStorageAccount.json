@@ -4,7 +4,7 @@
   "parameters": {
     "storageAccountName": {
       "type": "string",
-      "defaultValue": "storageAccountName",
+      "defaultValue": "storageaccountnamevh",
       "metadata": {
         "description": "Storage Account Name"
       }
@@ -32,15 +32,19 @@
       "containerNames": {
         "type": "array",
         "defaultValue": [
-          "logs",
-          "movies"
+          {
+            "name": "other",
+            "publicAccess": "Blob"
+          },
+          {
+            "name": "logs",
+            "publicAccess": "None"
+          }
         ],
-
         "metadata": {
           "description": "Specifies the name of the blob container."
         }
       }
-
     },
   "variables": {
     "storageAccountName": "[replace(parameters('storageAccountName'),'-', '')]"
@@ -60,9 +64,12 @@
         }
       },
       {
-        "name": "[concat(variables('storageAccountName'), '/', 'default/', parameters('containerNames')[copyIndex()])]",
+        "name": "[concat(variables('storageAccountName'), '/', 'default/', parameters('containerNames')[copyIndex()].name)]",
         "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
         "apiVersion": "2018-07-01",
+        "properties": {
+          "publicAccess": "[parameters('containerNames')[copyIndex()].publicAccess]"
+        },
         "copy": {
           "name": "storagecopy",
           "count": "[length(parameters('containerNames'))]"
