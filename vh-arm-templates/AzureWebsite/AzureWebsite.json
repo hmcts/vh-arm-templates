@@ -19,7 +19,7 @@
         "1.1",
         "1.2"
       ],
-      "defaultValue": "1.0"
+      "defaultValue": "1.2"
     },
     "allowedCorsOrigins": {
       "type": "array",
