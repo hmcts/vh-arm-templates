@@ -70,7 +70,7 @@
     {
       "type": "Microsoft.Sql/servers/databases/providers/locks",
       "apiVersion": "2016-09-01",
-      "name": "[concat(variables('MSSQLDBName'), '/Microsoft.Authorization/databases/locks')]",
+      "name": "[concat(variables('MSSQLDBName'), '/Microsoft.Authorization/locks/databases')]",
       "dependsOn": [
 
       ],
