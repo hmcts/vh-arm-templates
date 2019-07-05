@@ -72,7 +72,7 @@
       "apiVersion": "2016-09-01",
       "name": "[concat(parameters('MSSQLDBServerName'), '/', variables('MSSQLDBName'), '/Microsoft.Authorization/databaseLock')]",
       "dependsOn": [
-
+        "[resourceId(parameters('MSSQLDBServerName'), variables('MSSQLDBName'))]"
       ],
       "properties": {
         "level": "CanNotDelete",
