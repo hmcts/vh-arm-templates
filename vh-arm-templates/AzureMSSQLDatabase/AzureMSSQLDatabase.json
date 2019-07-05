@@ -70,9 +70,9 @@
     {
       "type": "Microsoft.Sql/servers/databases/providers/locks",
       "apiVersion": "2016-09-01",
-      "name": "[concat(variables('MSSQLDBName'), '/Microsoft.Authorization/siteLock')]",
+      "name": "[concat(variables('MSSQLDBName'), '/Microsoft.Authorization/databaseLock')]",
       "dependsOn": [
-        "[resourceId('Microsoft.Sql/servers/databases', variables('MSSQLDBName'))]"
+        "[variables('MSSQLDBName')]"
       ],
       "properties": {
         "level": "CanNotDelete",
