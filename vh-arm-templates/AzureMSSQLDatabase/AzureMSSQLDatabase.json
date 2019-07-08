@@ -56,8 +56,7 @@
       "type": "Microsoft.Sql/servers/databases",
       "location": "[resourceGroup().location]",
       "apiVersion": "2017-03-01-preview",
-      "dependsOn": [
-      ],
+      "dependsOn": [],
       "tags": {
         "displayName": "Database"
       },
@@ -67,8 +66,19 @@
         "maxSizeBytes": "[parameters('MSSQLDBSize')]",
         "requestedServiceObjectiveName": "[parameters('MSSQLRequestedServiceObjectiveName')]"
       }
+    },
+    {
+      "type": "Microsoft.Sql/servers/databases/providers/locks",
+      "apiVersion": "2016-09-01",
+      "name": "[concat(parameters('MSSQLDBServerName'), '/', variables('MSSQLDBName'), '/Microsoft.Authorization/databaseLock')]",
+      "dependsOn": [
+        "[resourceId(parameters('MSSQLDBServerName'), variables('MSSQLDBName'))]"
+      ],
+      "properties": {
+        "level": "CanNotDelete",
+        "notes": "Database should not be deleted."
+      }
     }
   ],
-  "outputs": {
-  }
+  "outputs": {}
 }
