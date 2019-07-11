@@ -54,7 +54,7 @@
       "name": "[parameters('MSSQLDBServerName')]",
       "type": "Microsoft.Sql/servers",
       "location": "[resourceGroup().location]",
-      "apiVersion": "2014-04-01-preview",
+      "apiVersion": "2015-05-01-preview",
       "dependsOn": [
         "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]"
 
@@ -71,7 +71,7 @@
           "name": "AllowAllWindowsAzureIps",
           "type": "firewallrules",
           "location": "[resourceGroup().location]",
-          "apiVersion": "2014-04-01-preview",
+          "apiVersion": "2015-05-01-preview",
           "dependsOn": [
             "[resourceId('Microsoft.Sql/servers', parameters('MSSQLDBServerName'))]"
           ],
