@@ -76,7 +76,7 @@
           "alwaysOn": true,
           "minTlsVersion": "[parameters('minTlsVersion')]",
           "cors": {
-            "allowedOrigins": "[parameters('allowedCorsOrigins')]",
+            "allowedOrigins": "[variables('allowedCorsOrigins')]",
             "supportCredentials": "[parameters('corsSupportCredentials')]"
           }
         },
