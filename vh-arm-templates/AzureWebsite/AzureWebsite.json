@@ -28,6 +28,10 @@
         "https://localhost"
       ]
     },
+    "corsSupportCredentials": {
+      "type": "bool",
+      "defaultValue": false
+    },
     "httpsOnly": {
       "type": "bool",
       "defaultValue": true
@@ -74,7 +78,8 @@
           "alwaysOn": true,
           "minTlsVersion": "[parameters('minTlsVersion')]",
           "cors": {
-            "allowedOrigins": "[parameters('allowedCorsOrigins')]"
+            "allowedOrigins": "[parameters('allowedCorsOrigins')]",
+            "supportCredentials": "[parameters('corsSupportCredentials')]"
           }
         },
         "httpsOnly": "[parameters('httpsOnly')]"
