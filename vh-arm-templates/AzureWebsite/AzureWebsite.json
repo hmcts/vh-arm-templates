@@ -22,11 +22,12 @@
       "defaultValue": "1.2"
     },
     "allowedCorsOrigins": {
-      "type": "array",
-      "defaultValue": [
-        "http://localhost",
-        "https://localhost"
-      ]
+      "type": "string",
+      "defaultValue": "http://localhost, https://localhost"
+    },
+    "corsSupportCredentials": {
+      "type": "bool",
+      "defaultValue": false
     },
     "httpsOnly": {
       "type": "bool",
@@ -52,7 +53,8 @@
     }
   },
   "variables": {
-    "keyVaultName": "[replace(parameters('appServicePlanName'),'-', '')]"
+    "keyVaultName": "[replace(parameters('appServicePlanName'),'-', '')]",
+    "allowedCorsOrigins": "[split(parameters('allowedCorsOrigins'),',')]"
   },
   "resources": [
     {
@@ -74,7 +76,8 @@
           "alwaysOn": true,
           "minTlsVersion": "[parameters('minTlsVersion')]",
           "cors": {
-            "allowedOrigins": "[parameters('allowedCorsOrigins')]"
+            "allowedOrigins": "[variables('allowedCorsOrigins')]",
+            "supportCredentials": "[parameters('corsSupportCredentials')]"
           }
         },
         "httpsOnly": "[parameters('httpsOnly')]"
@@ -100,7 +103,7 @@
           "alwaysOn": true,
           "minTlsVersion": "[parameters('minTlsVersion')]",
           "cors": {
-            "allowedOrigins": "[parameters('allowedCorsOrigins')]"
+            "allowedOrigins": "[variables('allowedCorsOrigins')]"
           }
         },
         "httpsOnly": "[parameters('httpsOnly')]"
